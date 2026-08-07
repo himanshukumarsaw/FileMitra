@@ -14,7 +14,7 @@ const router = Router();
 function generateToken(userId: string): string {
   return jwt.sign({ userId }, env.JWT_SECRET, {
     expiresIn: env.JWT_EXPIRES_IN,
-  });
+  } as jwt.SignOptions);
 }
 
 /**
