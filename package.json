@@ -1,0 +1,19 @@
+{
+  "name": "filemitra",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/dashboard",
+    "packages/backend",
+    "packages/gateway",
+    "packages/firmware-sim"
+  ],
+  "scripts": {
+    "dev:dashboard": "npm run dev --workspace=packages/dashboard",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:gateway": "npm run dev --workspace=packages/gateway",
+    "dev:sim": "npm run dev --workspace=packages/firmware-sim",
+    "build": "npm run build --workspaces --if-present",
+    "seed": "npm run seed --workspace=packages/backend"
+  }
+}

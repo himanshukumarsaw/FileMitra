@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+*.tflite
+__pycache__/
+*.pyc
+.venv/
+data/
+uploads/
+coverage/
+.turbo/
+*.log
+.DS_Store
+.qoder/
