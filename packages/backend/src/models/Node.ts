@@ -14,6 +14,10 @@ export interface INode extends Document {
   firmwareVersion: string;
   zone: string;
   hardwareModel: string;
+  /** Intelligent power management duty cycle */
+  powerMode: 'normal' | 'suspicious' | 'critical';
+  /** Instantaneous solar panel input (watts) */
+  solarInputW: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -37,6 +41,8 @@ const nodeSchema = new Schema<INode>(
     firmwareVersion: { type: String, default: '1.0.0' },
     zone: { type: String, required: true },
     hardwareModel: { type: String, default: 'ESP32-CAM' },
+    powerMode: { type: String, enum: ['normal', 'suspicious', 'critical'], default: 'normal' },
+    solarInputW: { type: Number, default: 0 },
   },
   { timestamps: true }
 );

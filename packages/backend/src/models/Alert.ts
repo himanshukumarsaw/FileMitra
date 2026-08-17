@@ -1,7 +1,7 @@
 import mongoose, { Schema, type Document } from 'mongoose';
 
 export interface IAlert extends Document {
-  type: 'human' | 'animal' | 'vehicle';
+  type: 'human' | 'animal' | 'vehicle' | 'fire';
   severity: 'low' | 'medium' | 'high' | 'critical';
   confidence: number;
   location: {
@@ -29,13 +29,26 @@ export interface IAlert extends Document {
   status: 'new' | 'acknowledged' | 'resolved' | 'dismissed';
   species?: string;
   description?: string;
+  soundType?: 'chainsaw' | 'engine' | 'gunshot' | 'vehicle' | 'animal_call' | 'fire_crackle' | 'ambient' | 'tamper' | 'unknown';
+  /** Alerts correlated into one incident (multi-node triangulation) share this id */
+  incidentId?: string;
+  /** Threat-confidence engine: suspicious until corroborated by a second node/camera */
+  verificationStatus?: 'suspicious' | 'confirmed';
+  /** Node ids that corroborated this incident */
+  confirmingNodes?: string[];
+  /** Objects identified by visual AI on the captured frame */
+  visualLabels?: string[];
+  /** Human-in-the-loop officer feedback */
+  feedback?: 'genuine' | 'false_alarm';
+  /** When an officer acknowledged the alert */
+  acknowledgedAt?: Date;
   createdAt: Date;
   updatedAt: Date;
 }
 
 const alertSchema = new Schema<IAlert>(
   {
-    type: { type: String, enum: ['human', 'animal', 'vehicle'], required: true },
+    type: { type: String, enum: ['human', 'animal', 'vehicle', 'fire'], required: true },
     severity: { type: String, enum: ['low', 'medium', 'high', 'critical'], required: true },
     confidence: { type: Number, min: 0, max: 1, required: true },
     location: {
@@ -63,6 +76,16 @@ const alertSchema = new Schema<IAlert>(
     },
     species: String,
     description: String,
+    soundType: {
+      type: String,
+      enum: ['chainsaw', 'engine', 'gunshot', 'vehicle', 'animal_call', 'fire_crackle', 'ambient', 'tamper', 'unknown'],
+    },
+    incidentId: { type: String, index: true },
+    verificationStatus: { type: String, enum: ['suspicious', 'confirmed'], default: 'suspicious' },
+    confirmingNodes: [{ type: String }],
+    visualLabels: [{ type: String }],
+    feedback: { type: String, enum: ['genuine', 'false_alarm'] },
+    acknowledgedAt: Date,
   },
   { timestamps: true }
 );

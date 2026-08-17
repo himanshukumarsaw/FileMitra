@@ -2,7 +2,16 @@ import mongoose, { Schema, type Document } from 'mongoose';
 
 export interface ISensorData extends Document {
   nodeId: mongoose.Types.ObjectId;
-  type: 'temperature' | 'humidity' | 'sound_level' | 'motion' | 'battery' | 'signal';
+  type:
+    | 'temperature'
+    | 'humidity'
+    | 'sound_level'
+    | 'motion'
+    | 'battery'
+    | 'signal'
+    | 'smoke'
+    | 'thermal'
+    | 'wind';
   value: number;
   unit: string;
   timestamp: Date;
@@ -12,7 +21,7 @@ const sensorDataSchema = new Schema<ISensorData>({
   nodeId: { type: Schema.Types.ObjectId, ref: 'Node', required: true },
   type: {
     type: String,
-    enum: ['temperature', 'humidity', 'sound_level', 'motion', 'battery', 'signal'],
+    enum: ['temperature', 'humidity', 'sound_level', 'motion', 'battery', 'signal', 'smoke', 'thermal', 'wind'],
     required: true,
   },
   value: { type: Number, required: true },

@@ -9,11 +9,15 @@
     "packages/firmware-sim"
   ],
   "scripts": {
+    "dev": "concurrently -k -n gateway,backend,dashboard,sim -c blue,green,magenta,yellow \"npm:dev:gateway\" \"npm:dev:backend\" \"npm:dev:dashboard\" \"npm:dev:sim\"",
     "dev:dashboard": "npm run dev --workspace=packages/dashboard",
     "dev:backend": "npm run dev --workspace=packages/backend",
     "dev:gateway": "npm run dev --workspace=packages/gateway",
     "dev:sim": "npm run dev --workspace=packages/firmware-sim",
     "build": "npm run build --workspaces --if-present",
     "seed": "npm run seed --workspace=packages/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.4"
   }
 }

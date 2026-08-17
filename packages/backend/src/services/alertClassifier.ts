@@ -6,13 +6,22 @@
  */
 
 export interface DetectionInput {
-  type: 'human' | 'animal' | 'vehicle';
+  type: 'human' | 'animal' | 'vehicle' | 'fire';
   confidence: number;
   timestamp: Date;
   location: { lat: number; lng: number };
   species?: string;
   zone?: string;
-  soundType?: 'chainsaw' | 'gunshot' | 'vehicle' | 'unknown';
+  soundType?:
+    | 'chainsaw'
+    | 'engine'
+    | 'gunshot'
+    | 'vehicle'
+    | 'animal_call'
+    | 'fire_crackle'
+    | 'ambient'
+    | 'tamper'
+    | 'unknown';
 }
 
 export interface ClassificationResult {
@@ -47,6 +56,12 @@ export function classifyAlert(input: DetectionInput): ClassificationResult {
   } else if (input.soundType === 'gunshot') {
     score += 60;
     reasoning.push('Gunshot sound detected — possible poaching activity');
+  } else if (input.soundType === 'fire_crackle') {
+    score += 50;
+    reasoning.push('Fire crackle acoustic signature detected');
+  } else if (input.soundType === 'tamper') {
+    score += 55;
+    reasoning.push('Node tampering detected — sudden motion / orientation change');
   }
 
   // --- Time-of-day factor ---
@@ -57,7 +72,15 @@ export function classifyAlert(input: DetectionInput): ClassificationResult {
   }
 
   // --- Detection type rules ---
-  if (input.type === 'human') {
+  if (input.type === 'fire') {
+    score += 55;
+    reasoning.push('Possible forest fire — acoustic crackle signature detected');
+
+    if (night) {
+      score += 10;
+      reasoning.push('Fire signature at night — delayed visibility, elevated risk');
+    }
+  } else if (input.type === 'human') {
     score += 20;
     reasoning.push('Human presence detected');
 

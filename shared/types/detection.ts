@@ -1,5 +1,5 @@
 export type DetectionType = 'human' | 'animal' | 'vehicle' | 'unknown';
-export type SoundType = 'chainsaw' | 'engine' | 'gunshot' | 'animal_call' | 'ambient' | 'unknown';
+export type SoundType = 'chainsaw' | 'engine' | 'gunshot' | 'animal_call' | 'fire_crackle' | 'ambient' | 'tamper' | 'unknown';
 
 export interface Detection {
   id: string;
@@ -15,7 +15,7 @@ export interface Detection {
 export interface SensorReading {
   id: string;
   nodeId: string;
-  type: 'temperature' | 'humidity' | 'sound_level' | 'motion' | 'battery' | 'signal';
+  type: 'temperature' | 'humidity' | 'sound_level' | 'motion' | 'battery' | 'signal' | 'smoke' | 'thermal' | 'wind';
   value: number;
   unit: string;
   timestamp: string;

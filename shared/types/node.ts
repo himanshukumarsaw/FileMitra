@@ -1,4 +1,6 @@
 export type NodeStatus = 'online' | 'offline' | 'warning';
+/** Intelligent power management: duty cycle scales with threat level */
+export type NodePowerMode = 'normal' | 'suspicious' | 'critical';
 
 export interface MonitoringNode {
   id: string;
@@ -12,4 +14,8 @@ export interface MonitoringNode {
   firmwareVersion: string;
   zone: string;
   hardwareModel: string;
+  /** Current power-management duty cycle */
+  powerMode?: NodePowerMode;
+  /** Instantaneous solar panel input in watts */
+  solarInputW?: number;
 }

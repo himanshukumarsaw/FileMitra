@@ -1,22 +1,62 @@
 @import "tailwindcss";
 
+/* Semantic tokens let the existing domain components respond to the selected theme. */
 @theme {
-  --color-forest: #065F46;
-  --color-forest-light: #10B981;
-  --color-amber: #F59E0B;
-  --color-danger: #EF4444;
-  --color-slate-dark: #0F172A;
-  --color-slate-surface: #1E293B;
-  --color-slate-text: #F8FAFC;
-  --color-slate-muted: #94A3B8;
+  --color-forest: var(--color-brand-strong);
+  --color-forest-light: var(--color-brand);
+  --color-amber: var(--color-warning);
+  --color-danger: var(--app-danger);
+  --color-slate-dark: var(--color-canvas);
+  --color-slate-surface: var(--color-surface);
+  --color-slate-text: var(--color-content);
+  --color-slate-muted: var(--color-muted);
+  --font-sans: "Inter", "Avenir Next", Avenir, ui-sans-serif, system-ui, sans-serif;
 }
 
-:root {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+:root, :root.light {
+  color-scheme: light;
+  --color-canvas: #f4f7f4; --color-surface: #ffffff; --color-surface-raised: #fbfdfb; --color-surface-muted: #edf2ed;
+  --color-content: #18251d; --color-muted: #69766d; --color-subtle: #95a198; --color-line: #dce5dd; --color-line-strong: #c8d4c9;
+  --color-brand: #177452; --color-brand-strong: #115d42; --color-brand-soft: #e1f2e9; --color-warning: #bd7112; --app-danger: #c6423c;
+  --app-shadow: 0 12px 32px rgb(33 50 39 / .07), 0 2px 6px rgb(33 50 39 / .04); --app-shadow-hover: 0 18px 40px rgb(33 50 39 / .12), 0 4px 12px rgb(33 50 39 / .06); --app-grid: rgb(22 77 50 / .035);
+}
+:root.dark {
+  color-scheme: dark;
+  --color-canvas: #101814; --color-surface: #17221c; --color-surface-raised: #1c2921; --color-surface-muted: #223128;
+  --color-content: #f2f7f2; --color-muted: #a5b3a8; --color-subtle: #708075; --color-line: #2b3a30; --color-line-strong: #3a4c40;
+  --color-brand: #63cf98; --color-brand-strong: #1c7c53; --color-brand-soft: #153c2b; --color-warning: #f0af45; --app-danger: #f37269;
+  --app-shadow: 0 14px 38px rgb(0 0 0 / .2), 0 2px 8px rgb(0 0 0 / .14); --app-shadow-hover: 0 18px 48px rgb(0 0 0 / .3), 0 5px 14px rgb(0 0 0 / .16); --app-grid: rgb(127 192 145 / .035);
 }
 
-body {
-  margin: 0;
-  background-color: #0F172A;
-  color: #F8FAFC;
-}
+* { box-sizing: border-box; }
+html { background: var(--color-canvas); }
+body { margin: 0; min-width: 320px; background: linear-gradient(var(--app-grid) 1px, transparent 1px), linear-gradient(90deg, var(--app-grid) 1px, transparent 1px), var(--color-canvas); background-size: 32px 32px; color: var(--color-content); font-family: var(--font-sans); text-rendering: optimizeLegibility; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+.app-page { max-width: 1680px; margin-inline: auto; padding: 1.5rem; }
+.app-surface { border: 1px solid var(--color-line); background: color-mix(in srgb, var(--color-surface) 94%, transparent); box-shadow: var(--app-shadow); }
+.app-eyebrow { color: var(--color-brand); font-size: .6875rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.app-title { color: var(--color-content); font-size: clamp(1.55rem, 2.3vw, 2.25rem); font-weight: 750; letter-spacing: -.045em; line-height: 1.05; }
+.app-subtitle { color: var(--color-muted); font-size: .875rem; line-height: 1.55; }
+.live-dot { animation: live-pulse 2.2s ease-out infinite; }
+@keyframes live-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(99 207 152 / .35); } 65% { box-shadow: 0 0 0 7px transparent; } }
+@keyframes enter-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+main > div { animation: enter-up .34s ease-out both; }
+
+:where(button, a, select, input, [tabindex]):focus-visible { outline: 3px solid color-mix(in srgb, var(--color-brand) 55%, transparent); outline-offset: 3px; border-radius: 8px; }
+.bg-slate-dark { background-color: var(--color-canvas) !important; }
+.bg-slate-surface { background-color: var(--color-surface) !important; }
+.border-slate-surface, .border-slate-700, .border-white\\/5, .border-white\\/10 { border-color: var(--color-line) !important; }
+.text-slate-text { color: var(--color-content) !important; }
+.text-slate-muted { color: var(--color-muted) !important; }
+.bg-white\\/\\[0\\.02\\], .bg-white\\/\\[0\\.03\\], .bg-white\\/\\[0\\.04\\], .bg-black\\/20, .bg-black\\/30 { background-color: var(--color-surface-muted) !important; }
+.shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: var(--app-shadow) !important; }
+.leaflet-container { font-family: var(--font-sans); }
+:root.light .leaflet-control-layers, :root.light .leaflet-bar a, :root.light .leaflet-popup-content-wrapper, :root.light .leaflet-popup-tip { background: var(--color-surface); color: var(--color-content); border-color: var(--color-line); }
+* { scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--color-line-strong); border-radius: 99px; }
+@media (max-width: 640px) { .app-page { padding: 1rem 1rem 5.5rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }

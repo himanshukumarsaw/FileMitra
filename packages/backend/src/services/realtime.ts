@@ -1,5 +1,6 @@
 import { Server } from 'socket.io';
 import type { IAlert } from '../models/Alert.js';
+import type { IDispatch } from '../models/Dispatch.js';
 
 let io: Server | null = null;
 
@@ -52,5 +53,32 @@ export function emitNodeHeartbeat(
     getIO().emit('node:heartbeat', { nodeId, ...data });
   } catch (err) {
     console.error('[realtime] emitNodeHeartbeat failed:', err);
+  }
+}
+
+/** Broadcast a new ranger dispatch (automated response) */
+export function emitDispatchNew(dispatch: IDispatch): void {
+  try {
+    getIO().emit('dispatch:new', dispatch);
+  } catch (err) {
+    console.error('[realtime] emitDispatchNew failed:', err);
+  }
+}
+
+/** Broadcast a dispatch status/timeline update */
+export function emitDispatchUpdated(dispatch: IDispatch): void {
+  try {
+    getIO().emit('dispatch:update', dispatch);
+  } catch (err) {
+    console.error('[realtime] emitDispatchUpdated failed:', err);
+  }
+}
+
+/** Broadcast a LoRa packet arrival so the map can animate radio traffic */
+export function emitNodePacket(nodeId: string, kind: 'alert' | 'heartbeat' | 'sensor'): void {
+  try {
+    getIO().emit('node:packet', { nodeId, kind, at: new Date().toISOString() });
+  } catch {
+    // non-fatal — packet ripples are cosmetic
   }
 }
