@@ -39,7 +39,7 @@ export function startReceiver(): void {
     }
 
     if (req.method === 'GET' && req.url === '/health') {
-      sendJson(res, 200, { status: 'ok', service: 'FileMitra Gateway', packetsReceived: rxCount });
+      sendJson(res, 200, { status: 'ok', service: 'JungleSathi Gateway', packetsReceived: rxCount });
       return;
     }
 

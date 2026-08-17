@@ -23,7 +23,7 @@ import {
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { to: '/', icon: LayoutDashboard, label: 'Overview' },
+  { to: '/dashboard', icon: LayoutDashboard, label: 'Overview' },
   { to: '/alerts', icon: Bell, label: 'Alerts' },
   { to: '/incidents', icon: Crosshair, label: 'Activity' },
   { to: '/dispatch', icon: Siren, label: 'Teams' },
@@ -76,17 +76,22 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onCloseMobile
           mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >
-        {/* Brand */}
-        <div className="flex h-16 items-center gap-3 border-b border-slate-700/50 px-4">
+        {/* Brand — links back out to the public site */}
+        <NavLink
+          to="/"
+          onClick={onCloseMobile}
+          title="Back to JungleSathi home"
+          className="flex h-16 items-center gap-3 border-b border-slate-700/50 px-4 transition-colors hover:bg-slate-700/30"
+        >
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-forest-light/20">
             <TreePine className="h-5 w-5 text-forest-light" />
           </div>
           {showLabels && (
             <span className="text-lg font-semibold tracking-tight text-slate-text">
-              FileMitra
+              JungleSathi
             </span>
           )}
-        </div>
+        </NavLink>
 
         {/* Navigation */}
         <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">

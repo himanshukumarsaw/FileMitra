@@ -4,16 +4,16 @@ import { connectPublisher } from './mqtt-publisher.js';
 import { gatewayEnv } from './config.js';
 
 /**
- * FileMitra Forest Guard — Gateway
+ * JungleSathi Forest Guard — Gateway
  *
  * Central bridge between the LoRa mesh and the cloud:
  *  1. Runs an embedded MQTT broker (no Mosquitto install required)
  *  2. Receives LoRa uplinks over HTTP (simulated concentrator)
- *  3. Decodes packets and publishes them to filemitra/gateway/* topics,
+ *  3. Decodes packets and publishes them to junglesathi/gateway/* topics,
  *     which the backend consumes exactly like a production deployment.
  */
 async function main(): Promise<void> {
-  console.log('🌲 FileMitra Forest Guard — Gateway starting...');
+  console.log('🌲 JungleSathi Forest Guard — Gateway starting...');
 
   await startBroker();
   connectPublisher();

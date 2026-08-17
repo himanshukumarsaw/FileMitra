@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/providers/ThemeProvider'
 import { RoleProvider } from '@/providers/RoleProvider'
 import { ToastProvider } from '@/components/ui/Toast'
 import { Layout } from '@/components/layout/Layout'
+import { Home } from '@/pages/Home'
 import { Dashboard } from '@/pages/Dashboard'
 import { Alerts } from '@/pages/Alerts'
 import { MapPage } from '@/pages/Map'
@@ -16,11 +17,13 @@ import { AuditLogPage } from '@/pages/AuditLogPage'
 import { NodePage } from '@/pages/NodePage'
 
 const router = createBrowserRouter([
+  // Public landing page — deliberately outside the dashboard shell
+  { path: '/', element: <Home /> },
   {
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Dashboard /> },
+      { path: 'dashboard', element: <Dashboard /> },
       { path: 'alerts', element: <Alerts /> },
       { path: 'incidents', element: <IncidentsPage /> },
       { path: 'dispatch', element: <DispatchPage /> },

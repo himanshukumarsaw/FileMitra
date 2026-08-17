@@ -10,7 +10,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 function getInitialTheme(): Theme {
-  const stored = localStorage.getItem('filemitra-theme')
+  const stored = localStorage.getItem('junglesathi-theme')
   if (stored === 'dark' || stored === 'light') return stored
   if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
   return 'dark'
@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement
     root.classList.remove('dark', 'light')
     root.classList.add(theme)
-    localStorage.setItem('filemitra-theme', theme)
+    localStorage.setItem('junglesathi-theme', theme)
   }, [theme])
 
   const toggleTheme = () => {

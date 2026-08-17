@@ -52,10 +52,10 @@ export function decodePacket(packet: LoRaPacket): DecodedPacket {
 export function topicForKind(kind: LoRaPacketKind): string {
   switch (kind) {
     case 'alert':
-      return 'filemitra/gateway/alerts';
+      return 'junglesathi/gateway/alerts';
     case 'sensor':
-      return 'filemitra/gateway/sensors';
+      return 'junglesathi/gateway/sensors';
     case 'heartbeat':
-      return 'filemitra/gateway/heartbeat';
+      return 'junglesathi/gateway/heartbeat';
   }
 }

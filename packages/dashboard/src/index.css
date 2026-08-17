@@ -59,4 +59,57 @@ main > div { animation: enter-up .34s ease-out both; }
 *::-webkit-scrollbar { width: 8px; height: 8px; }
 *::-webkit-scrollbar-thumb { background: var(--color-line-strong); border-radius: 99px; }
 @media (max-width: 640px) { .app-page { padding: 1rem 1rem 5.5rem; } }
+
+/* ══ Public landing page ══════════════════════════════════════════════════
+   Scoped under .home-root so the dark jungle palette never leaks into the
+   dashboard, and stays dark regardless of the app's light/dark toggle. */
+.home-root {
+  --home-gold: #f6c445;
+  --home-gold-hi: #ffd873;
+  --home-ink: #f3efe2;
+  --home-dim: rgb(201 214 196 / .72);
+  --home-green: #12a150;
+  --home-serif: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  color-scheme: dark;
+}
+.home-root ::selection { background: var(--home-gold); color: #10200f; }
+
+.home-util { color: rgb(243 239 226 / .82); transition: color .18s ease; }
+.home-util:hover { color: var(--home-gold); }
+
+.home-icon-btn { display: inline-flex; align-items: center; justify-content: center; height: 2.5rem; width: 2.5rem; margin-inline-start: -.5rem; border-radius: 9999px; color: var(--home-ink); transition: background-color .18s ease, color .18s ease; }
+.home-icon-btn:hover { background: rgb(255 255 255 / .12); color: var(--home-gold); }
+
+.home-wordmark { display: block; font-family: var(--home-serif); font-size: clamp(1.5rem, 3.1vw, 2.2rem); font-weight: 700; letter-spacing: .012em; color: var(--home-ink); text-shadow: 0 2px 18px rgb(0 0 0 / .62); }
+.home-wordmark-sub { display: block; margin-top: .3em; font-size: clamp(.5rem, .82vw, .64rem); font-weight: 600; letter-spacing: .42em; text-indent: .42em; text-transform: uppercase; color: rgb(243 239 226 / .82); text-shadow: 0 1px 10px rgb(0 0 0 / .6); }
+
+/* Gold pill CTA */
+.home-cta { display: inline-flex; align-items: center; justify-content: center; border-radius: 9999px; background: var(--home-gold); padding: .58rem 1.35rem; font-size: .875rem; font-weight: 700; color: #16210c; white-space: nowrap; box-shadow: 0 6px 22px rgb(0 0 0 / .34); transition: background-color .18s ease, transform .18s ease; }
+.home-cta:hover { background: var(--home-gold-hi); transform: translateY(-1px); }
+
+.home-display { font-family: var(--home-serif); font-size: clamp(3rem, 9.2vw, 7.2rem); font-weight: 700; line-height: .96; letter-spacing: -.022em; color: var(--home-gold); text-shadow: 0 4px 40px rgb(0 0 0 / .68), 0 1px 3px rgb(0 0 0 / .5); }
+.home-tagline { margin-top: 1.15rem; font-family: var(--home-serif); font-size: clamp(1rem, 1.85vw, 1.45rem); font-weight: 600; color: var(--home-ink); text-shadow: 0 2px 20px rgb(0 0 0 / .72); }
+
+.home-hero-link { display: inline-flex; align-items: center; gap: .55rem; border-bottom: 1px solid rgb(246 196 69 / .5); padding-bottom: .3rem; font-size: .9375rem; font-weight: 600; color: var(--home-ink); transition: color .18s ease, border-color .18s ease; }
+.home-hero-link:hover { color: var(--home-gold); border-color: var(--home-gold); }
+
+.home-stat { margin-top: .3rem; font-family: var(--home-serif); font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 700; color: var(--home-ink); }
+
+.home-eyebrow { font-size: .6875rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--home-gold); }
+.home-h2 { font-family: var(--home-serif); font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; line-height: 1.08; letter-spacing: -.02em; color: var(--home-ink); }
+.home-h3 { font-family: var(--home-serif); font-size: 1.3rem; font-weight: 700; color: var(--home-ink); }
+.home-pillar-icon { display: inline-flex; height: 2.9rem; width: 2.9rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid rgb(246 196 69 / .35); background: rgb(246 196 69 / .1); color: var(--home-gold); }
+
+.home-drawer-link { border-bottom: 1px solid rgb(255 255 255 / .07); padding: .95rem 0; font-family: var(--home-serif); font-size: 1.2rem; font-weight: 600; color: var(--home-ink); transition: color .18s ease, padding-left .18s ease; }
+.home-drawer-link:hover { color: var(--home-gold); padding-left: .4rem; }
+
+.home-chat { position: relative; max-width: 17rem; border-radius: .5rem; background: var(--home-green); padding: .85rem 2rem .85rem 1rem; font-size: .875rem; font-weight: 500; line-height: 1.45; color: #fff; box-shadow: 0 10px 30px rgb(0 0 0 / .38); }
+.home-chat-fab { display: inline-flex; height: 3.25rem; width: 3.25rem; align-items: center; justify-content: center; border-radius: 9999px; background: var(--home-green); color: #fff; box-shadow: 0 10px 30px rgb(0 0 0 / .42); transition: transform .18s ease, background-color .18s ease; }
+.home-chat-fab:hover { background: #15b95c; transform: translateY(-2px); }
+
+/* Foreground foliage drift — disabled under prefers-reduced-motion below */
+.jungle-sway { animation: jungle-sway 11s ease-in-out infinite; }
+.jungle-sway-slow { animation: jungle-sway 16s ease-in-out infinite reverse; }
+@keyframes jungle-sway { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(1.1deg); } }
+
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }

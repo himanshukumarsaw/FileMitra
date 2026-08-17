@@ -1,7 +1,7 @@
 {
-  "name": "@filemitra/backend",
+  "name": "@junglesathi/backend",
   "version": "1.0.0",
-  "description": "FileMitra Wildlife Monitoring System - Backend Service",
+  "description": "JungleSathi Wildlife Monitoring System - Backend Service",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",

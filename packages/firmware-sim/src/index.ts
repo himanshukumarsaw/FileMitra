@@ -4,14 +4,14 @@ import { transmit } from './lora.js';
 import { runNextScenario } from './demoMode.js';
 
 /**
- * FileMitra Forest Guard — Firmware Simulator
+ * JungleSathi Forest Guard — Firmware Simulator
  *
  * Mimics solar-powered ESP32 LoRa nodes so the whole pipeline can be
  * demoed without hardware: registration, heartbeats, ambient sensor
  * readings, and scripted edge-AI scenarios (gunshot / chainsaw / fire).
  */
 async function main(): Promise<void> {
-  console.log('🌲 FileMitra Forest Guard — Firmware Simulator starting...');
+  console.log('🌲 JungleSathi Forest Guard — Firmware Simulator starting...');
   console.log(`[sim] Gateway uplink: ${simEnv.GATEWAY_UPLINK}`);
   console.log(`[sim] Backend:        ${simEnv.BACKEND_URL}`);
 

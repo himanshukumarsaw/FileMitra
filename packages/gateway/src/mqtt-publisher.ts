@@ -11,7 +11,7 @@ const MAX_QUEUE = 100;
 /** Connect the gateway publisher to the MQTT broker (embedded by default). */
 export function connectPublisher(): void {
   client = mqtt.connect(gatewayEnv.MQTT_BROKER_URL, {
-    clientId: `filemitra-gateway-${Date.now()}`,
+    clientId: `junglesathi-gateway-${Date.now()}`,
     reconnectPeriod: 3000,
     connectTimeout: 5000,
     // The embedded Aedes broker speaks MQTT 3.1.1 — mqtt.js defaults to v5

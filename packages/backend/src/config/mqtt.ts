@@ -6,7 +6,7 @@ let client: mqtt.MqttClient | null = null;
 export function connectMQTT(): void {
   try {
     client = mqtt.connect(env.MQTT_BROKER_URL, {
-      clientId: `filemitra-backend-${Date.now()}`,
+      clientId: `junglesathi-backend-${Date.now()}`,
       reconnectPeriod: 5000,
       connectTimeout: 10000,
       // The embedded Aedes broker speaks MQTT 3.1.1 — mqtt.js defaults to v5
@@ -16,9 +16,9 @@ export function connectMQTT(): void {
     client.on('connect', () => {
       console.log('[MQTT] Connected to broker');
       client!.subscribe([
-        'filemitra/gateway/alerts',
-        'filemitra/gateway/sensors',
-        'filemitra/gateway/heartbeat',
+        'junglesathi/gateway/alerts',
+        'junglesathi/gateway/sensors',
+        'junglesathi/gateway/heartbeat',
       ]);
     });
 
@@ -28,11 +28,11 @@ export function connectMQTT(): void {
         // Import dynamically to avoid circular deps
         const { processAlert } = await import('../services/alertProcessor.js');
 
-        if (topic === 'filemitra/gateway/alerts') {
+        if (topic === 'junglesathi/gateway/alerts') {
           const { emitNodePacket } = await import('../services/realtime.js');
           if (typeof payload.nodeId === 'string') emitNodePacket(payload.nodeId, 'alert');
           await processAlert(payload);
-        } else if (topic === 'filemitra/gateway/sensors') {
+        } else if (topic === 'junglesathi/gateway/sensors') {
           const { SensorData } = await import('../models/SensorData.js');
           const { emitNodePacket } = await import('../services/realtime.js');
           if (typeof payload.nodeId === 'string') emitNodePacket(payload.nodeId, 'sensor');
@@ -42,7 +42,7 @@ export function connectMQTT(): void {
             const { checkFireFusion } = await import('../services/fireFusion.js');
             void checkFireFusion(payload.nodeId).catch((e) => console.error('[fire-fusion] failed:', e));
           }
-        } else if (topic === 'filemitra/gateway/heartbeat') {
+        } else if (topic === 'junglesathi/gateway/heartbeat') {
           const { Node } = await import('../models/Node.js');
           const { emitNodeHeartbeat, emitNodePacket } = await import('../services/realtime.js');
           if (typeof payload.nodeId === 'string') emitNodePacket(payload.nodeId, 'heartbeat');

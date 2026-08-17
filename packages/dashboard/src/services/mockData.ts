@@ -1,5 +1,5 @@
 /**
- * FileMitra — Mock Data Service
+ * JungleSathi — Mock Data Service
  * Generates rich, deterministic mock data for the wildlife monitoring dashboard demo.
  */
 

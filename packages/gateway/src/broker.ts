@@ -4,7 +4,7 @@ import { gatewayEnv } from './config.js';
 
 /**
  * Embedded MQTT broker (Aedes) so the Forest Guard stack runs without
- * installing Mosquitto. The backend subscribes to filemitra/gateway/*
+ * installing Mosquitto. The backend subscribes to junglesathi/gateway/*
  * topics on this broker; the gateway publisher connects to it too.
  */
 export function startBroker(): Promise<Aedes> {

@@ -48,13 +48,13 @@ const NODE_DEFS = [
 // ── User definitions ─────────────────────────────────────────────────────────
 
 const USER_DEFS = [
-  { email: 'admin@filemitra.in',         role: 'admin'  as const, name: 'Admin User' },
+  { email: 'admin@junglesathi.in',         role: 'admin'  as const, name: 'Admin User' },
   { email: 'officer.sharma@forest.gov',  role: 'officer' as const, name: 'Rajesh Sharma' },
   { email: 'officer.priya@forest.gov',   role: 'officer' as const, name: 'Priya Menon' },
   { email: 'viewer.anil@forest.gov',     role: 'viewer' as const, name: 'Anil Kumar' },
   { email: 'viewer.neha@forest.gov',     role: 'viewer' as const, name: 'Neha Patel' },
 ];
-const DEFAULT_PASSWORD = 'filemitra123';
+const DEFAULT_PASSWORD = 'junglesathi123';
 
 // ── Alert generation ─────────────────────────────────────────────────────────
 

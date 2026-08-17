@@ -46,7 +46,7 @@ app.get('/api/health', (_req, res) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    service: 'FileMitra Backend',
+    service: 'JungleSathi Backend',
   });
 });
 
@@ -77,7 +77,7 @@ async function start() {
     await connectDB();
     connectMQTT();
     httpServer.listen(env.PORT, () => {
-      console.log(`🌲 FileMitra Backend running on port ${env.PORT}`);
+      console.log(`🌲 JungleSathi Backend running on port ${env.PORT}`);
       console.log(`   Health: http://localhost:${env.PORT}/api/health`);
     });
   } catch (error) {

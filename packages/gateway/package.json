@@ -1,7 +1,7 @@
 {
-  "name": "@filemitra/gateway",
+  "name": "@junglesathi/gateway",
   "version": "1.0.0",
-  "description": "FileMitra Forest Guard — LoRa gateway: embedded MQTT broker + LoRa uplink receiver",
+  "description": "JungleSathi Forest Guard — LoRa gateway: embedded MQTT broker + LoRa uplink receiver",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {

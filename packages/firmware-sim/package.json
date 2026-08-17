@@ -1,7 +1,7 @@
 {
-  "name": "@filemitra/firmware-sim",
+  "name": "@junglesathi/firmware-sim",
   "version": "1.0.0",
-  "description": "FileMitra Forest Guard — firmware simulator: virtual LoRa sensor nodes for hardware-free demos",
+  "description": "JungleSathi Forest Guard — firmware simulator: virtual LoRa sensor nodes for hardware-free demos",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {

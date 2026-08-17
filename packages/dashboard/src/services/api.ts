@@ -1,5 +1,5 @@
 /**
- * API client — talks to the FileMitra backend through the Vite proxy (/api).
+ * API client — talks to the JungleSathi backend through the Vite proxy (/api).
  * Includes normalizers that map Mongoose documents to the shared types.
  */
 
