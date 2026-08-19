@@ -102,7 +102,7 @@ export async function getAlertById(req: AuthRequest, res: Response, next: NextFu
 /** POST /api/alerts — create alert (admin/officer only) */
 export async function createAlert(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
   try {
-    const { type, severity, confidence, location, nodeId, species, description, imageUrl, audioUrl } = req.body;
+    const { type, severity, confidence, location, nodeId, species, description, imageUrl, audioUrl, soundType } = req.body;
 
     if (!type || !confidence || !location || !nodeId) {
       throw new AppError('Missing required fields: type, confidence, location, nodeId', 400);
@@ -118,6 +118,7 @@ export async function createAlert(req: AuthRequest, res: Response, next: NextFun
       description,
       imageUrl,
       audioUrl,
+      soundType,
     };
 
     const alert = await processAlert(incoming);

@@ -15,7 +15,7 @@ import {
   Siren,
   ThumbsDown,
 } from 'lucide-react'
-import type { Alert, AlertType, Dispatch } from '../../../../shared/types'
+import type { Alert, AlertType, Dispatch } from '../../../shared/types'
 import { useAlerts, useDispatches, useResponseStats } from '@/hooks/useLiveData'
 import { cn } from '@/lib/utils'
 

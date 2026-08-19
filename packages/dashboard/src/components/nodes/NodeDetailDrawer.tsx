@@ -15,7 +15,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { relativeTime, formatCoords } from '@/lib/format'
-import type { MonitoringNode } from '../../../../../shared/types'
+import type { MonitoringNode } from '../../../../shared/types'
 import {
   deriveTelemetry,
   deriveNodeWarnings,

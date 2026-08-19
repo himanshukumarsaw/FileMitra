@@ -6,13 +6,15 @@
     "packages/dashboard",
     "packages/backend",
     "packages/gateway",
-    "packages/firmware-sim"
+    "packages/firmware-sim",
+    "ml"
   ],
   "scripts": {
-    "dev": "concurrently -k -n gateway,backend,dashboard,sim -c blue,green,magenta,yellow \"npm:dev:gateway\" \"npm:dev:backend\" \"npm:dev:dashboard\" \"npm:dev:sim\"",
-    "dev:dashboard": "npm run dev --workspace=packages/dashboard",
+    "dev": "concurrently -k -n gateway,backend,dashboard,sim,ml -c blue,green,magenta,yellow,cyan \"npm:dev:gateway\" \"npm:dev:backend\" \"npm:dev:dashboard\" \"npm:dev:sim\" \"npm:dev:ml\"",
+    "dev:ml": "powershell -Command \"Set-Location ml; $env:PYTHONPATH = 'D:\\FileMitra'; pip install -r requirements.txt; python -m uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload\"",
     "dev:backend": "npm run dev --workspace=packages/backend",
     "dev:gateway": "npm run dev --workspace=packages/gateway",
+    "dev:dashboard": "npm run dev --workspace=packages/dashboard",
     "dev:sim": "npm run dev --workspace=packages/firmware-sim",
     "build": "npm run build --workspaces --if-present",
     "seed": "npm run seed --workspace=packages/backend"

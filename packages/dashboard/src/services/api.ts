@@ -3,7 +3,7 @@
  * Includes normalizers that map Mongoose documents to the shared types.
  */
 
-import type { Alert, MonitoringNode, AnalyticsSummary, Dispatch, FireRiskZone } from '../../../../shared/types'
+import type { Alert, MonitoringNode, AnalyticsSummary, Dispatch, FireRiskZone } from '../../../shared/types'
 
 const API_BASE = '/api'
 

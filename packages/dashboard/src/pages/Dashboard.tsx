@@ -119,8 +119,9 @@ export function Dashboard() {
         detail: 'Review the alerts and confirm that help is on the way.',
         action: 'Review urgent alerts',
         path: '/alerts',
-        tone: 'border-red-500/30 bg-red-500/10',
-        text: 'text-red-300',
+        tone: 'border-red-500/40 bg-red-500/15',
+        text: 'text-red-700',
+        iconBg: 'bg-red-100',
       }
     : activeTeams.length > 0
       ? {
@@ -128,16 +129,18 @@ export function Dashboard() {
           detail: 'Teams are responding in the field. You can follow their progress here.',
           action: 'Track response',
           path: '/dispatch',
-          tone: 'border-violet-500/30 bg-violet-500/10',
-          text: 'text-violet-200',
+          tone: 'border-violet-500/40 bg-violet-500/15',
+          text: 'text-violet-700',
+          iconBg: 'bg-violet-100',
         }
       : {
           title: 'Everything is calm right now',
           detail: `${onlineCount} field devices are reporting normally. We will highlight anything that needs your attention.`,
-          action: 'See the map',
-          path: '/map',
-          tone: 'border-emerald-500/30 bg-emerald-500/10',
-          text: 'text-emerald-200',
+          action: 'All clear',
+          path: '#',
+          tone: 'border-emerald-500/40 bg-emerald-500/15',
+          text: 'text-emerald-700',
+          iconBg: 'bg-emerald-100',
         }
 
   return (

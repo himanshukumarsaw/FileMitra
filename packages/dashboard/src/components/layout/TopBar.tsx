@@ -4,9 +4,9 @@ import { useTheme } from '@/providers/ThemeProvider'
 import { useConnectionStatus, useSocketEvent } from '@/hooks/useSocket'
 import { useLiveAlertListener } from '@/hooks/useLiveData'
 import { useRole, ROLES, type Role } from '@/providers/RoleProvider'
-import { GlobalSearch } from './GlobalSearch'
+
 import { NotificationCenter } from './NotificationCenter'
-import type { Alert, Dispatch } from '../../../../../shared/types'
+import type { Alert, Dispatch } from '../../../../shared/types'
 
 export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
   const { theme, toggleTheme } = useTheme()
@@ -91,8 +91,7 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
         </div>
       )}
 
-      {/* Global search (spec #17) */}
-      <GlobalSearch />
+
 
       <div className="flex items-center gap-3 ml-auto">
         {/* Voice alert toggle */}

@@ -12,7 +12,7 @@ import {
   Navigation, Crosshair,
 } from 'lucide-react'
 import { MapContainer, TileLayer, CircleMarker, Circle, Tooltip } from 'react-leaflet'
-import type { AlertType, Dispatch, DispatchStatus } from '../../../../shared/types'
+import type { AlertType, Dispatch, DispatchStatus } from '../../../shared/types'
 import { useDispatches } from '@/hooks/useLiveData'
 import { resolveDispatch } from '@/services/api'
 import { useRole } from '@/providers/RoleProvider'

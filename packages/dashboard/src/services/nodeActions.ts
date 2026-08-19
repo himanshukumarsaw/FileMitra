@@ -5,7 +5,7 @@
  * timestamps, ready to be swapped for real endpoints without UI changes.
  */
 
-import type { MonitoringNode } from '../../../../shared/types'
+import type { MonitoringNode } from '../../../shared/types'
 import { LATEST_FIRMWARE } from './nodeTelemetry'
 
 export type NodeCommand = 'restart' | 'calibrate' | 'firmware'

@@ -5,7 +5,7 @@
  * and wildlife movement intel are all computed from alerts/nodes/zones.
  */
 
-import type { Alert, MonitoringNode, FireRiskZone } from '../../../../shared/types'
+import type { Alert, MonitoringNode, FireRiskZone } from '../../../shared/types'
 
 // ---------------------------------------------------------------------------
 // Threat score (0-100) with contributing factors

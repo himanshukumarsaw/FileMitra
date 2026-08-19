@@ -12,7 +12,7 @@ import {
   CheckSquare,
   Square,
 } from 'lucide-react'
-import type { Alert, AlertSeverity, AlertType, AlertStatus } from '../../../../shared/types'
+import type { Alert, AlertSeverity, AlertType, AlertStatus } from '../../../shared/types'
 import { useAlerts, useNodes } from '@/hooks/useLiveData'
 import { cn } from '@/lib/utils'
 import { relativeTime } from '@/lib/format'

@@ -12,7 +12,7 @@ import {
   CircleCheck,
 } from 'lucide-react'
 import { useQueryClient } from '@tanstack/react-query'
-import type { Alert, AlertSeverity, AlertType } from '../../../../../shared/types'
+import type { Alert, AlertSeverity, AlertType } from '../../../../shared/types'
 import {
   acknowledgeAlert, alertFeedback, escalateAlert, createDispatch, createIncident,
 } from '@/services/api'

@@ -18,7 +18,7 @@ import { HeatmapLayer } from '@/components/map/HeatmapLayer'
 import { generateMockHeatmapData } from '@/services/mockData'
 import { useAlerts, useNodes, useDispatches, useFireRisk } from '@/hooks/useLiveData'
 import { useSocketEvent } from '@/hooks/useSocket'
-import type { Alert, AlertSeverity, AlertType, MonitoringNode, NodeStatus } from '../../../../shared/types'
+import type { Alert, AlertSeverity, AlertType, MonitoringNode, NodeStatus } from '../../../shared/types'
 
 const CENTER: [number, number] = [21.55, 79.65]
 const ZOOM = 11

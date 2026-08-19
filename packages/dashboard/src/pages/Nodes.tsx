@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import { useNodes } from '@/hooks/useLiveData'
 import { NodeDetailDrawer } from '@/components/nodes/NodeDetailDrawer'
 import { deriveTelemetry, deriveNodeWarnings } from '@/services/nodeTelemetry'
-import type { MonitoringNode, NodeStatus } from '../../../../shared/types'
+import type { MonitoringNode, NodeStatus } from '../../../shared/types'
 
 const statusConfig: Record<NodeStatus, { color: string; bg: string; label: string }> = {
   online:  { color: 'text-forest-light', bg: 'bg-forest-light', label: 'Online' },

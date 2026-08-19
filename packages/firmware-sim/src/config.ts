@@ -5,6 +5,8 @@ export const simEnv = {
   GATEWAY_UPLINK: process.env.GATEWAY_UPLINK || 'http://localhost:4001/lora/uplink',
   /** Backend REST API (used for node self-registration) */
   BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:4000',
+  /** ML acoustic threat detection service */
+  ML_SERVICE_URL: process.env.ML_SERVICE_URL || 'http://localhost:8000',
   /** Seconds between demo scenario events */
   SCENARIO_INTERVAL_MS: parseInt(process.env.SCENARIO_INTERVAL_MS || '45000', 10),
   /**

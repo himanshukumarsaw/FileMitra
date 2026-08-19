@@ -1,18 +1,22 @@
 import { type Request, type Response, type NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { User, type IUser } from '../models/User.js';
+import { EmployeeMaster } from '../models/EmployeeMaster.js';
 import { env } from '../config/env.js';
 
-/** Extend Express Request to include authenticated user */
 export interface AuthRequest extends Request {
   user?: IUser;
+  employee?: {
+    employeeCode: string;
+    fullName: string;
+    dob: Date;
+    designation: string;
+    department: string;
+    employmentStatus: string;
+    registrationStatus: string;
+  };
 }
 
-/**
- * JWT verification middleware.
- * Extracts Bearer token from Authorization header, verifies it,
- * and attaches the user document to req.user.
- */
 export async function verifyToken(
   req: AuthRequest,
   res: Response,
@@ -41,12 +45,9 @@ export async function verifyToken(
   }
 }
 
-/**
- * Role-based access control middleware factory.
- * Returns middleware that checks if req.user.role is in the allowed roles.
- * @param roles - Allowed role values
- */
-export function requireRole(...roles: Array<'admin' | 'officer' | 'viewer'>) {
+export function requireRole(
+  ...roles: Array<'admin' | 'officer' | 'viewer' | 'employee'>
+) {
   return (req: AuthRequest, res: Response, next: NextFunction): void => {
     if (!req.user) {
       res.status(401).json({ error: 'Authentication required.' });
@@ -60,4 +61,35 @@ export function requireRole(...roles: Array<'admin' | 'officer' | 'viewer'>) {
 
     next();
   };
+}
+
+export async function requireEmployeeAuth(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
+  try {
+    if (!req.user) {
+      res.status(401).json({ error: 'Authentication required.' });
+      return;
+    }
+
+    const employee = await EmployeeMaster.findOne({ employee_code: req.user.employee_code });
+
+    if (!employee) {
+      res.status(403).json({ error: 'Employee portal access required.' });
+      return;
+    }
+
+    req.employee = {
+      employeeCode: employee.employee_code,
+      fullName: employee.full_name,
+      dob: employee.dob,
+      designation: employee.designation,
+      department: employee.department,
+      employmentStatus: employee.employment_status,
+      registrationStatus: employee.registration_status,
+    };
+
+    next();
+  } catch (error) {
+    console.error('Employee auth error:', error);
+    res.status(500).json({ error: 'Employee verification failed' });
+  }
 }

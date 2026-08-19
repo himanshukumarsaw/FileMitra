@@ -5,7 +5,7 @@
  * ready to be swapped for a real telemetry endpoint without UI changes.
  */
 
-import type { MonitoringNode } from '../../../../shared/types'
+import type { MonitoringNode } from '../../../shared/types'
 
 export const LATEST_FIRMWARE = 'v2.4.0'
 

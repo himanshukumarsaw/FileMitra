@@ -10,7 +10,7 @@ export function Settings() {
       </div>
 
       {/* Mobile node deployment card */}
-      <div className="max-w-xl rounded-xl border border-white/5 bg-[#1E293B] p-5 shadow-lg shadow-black/20">
+      <div className="max-w-xl rounded-xl border border-white/[0.07] bg-[#050b07] p-5 shadow-lg shadow-black/20">
         <h2 className="text-base font-semibold text-slate-text">Mobile Node Deployment</h2>
         <p className="mt-1 text-sm text-slate-muted">
           Turn any smartphone into a Forest Guard sensor node: microphone-based Edge AI
@@ -26,7 +26,7 @@ export function Settings() {
         </p>
         <a
           href="/node"
-          className="mt-4 inline-block rounded-lg bg-emerald-500/20 px-4 py-2 text-sm font-semibold text-emerald-400 transition hover:bg-emerald-500/30"
+          className="mt-4 inline-block rounded-lg bg-forest-light/15 px-4 py-2 text-sm font-semibold text-forest-light transition hover:bg-forest-light/25"
         >
           Open Node App on this device
         </a>

@@ -7,7 +7,7 @@
  * whether the gateway runs on this machine or another host on the LAN.
  */
 
-import { encodePayload, type AlertPayload, type HeartbeatPayload, type LoRaPacket } from '../../../../shared/types';
+import { encodePayload, type AlertPayload, type HeartbeatPayload, type LoRaPacket } from '../../../shared/types';
 
 const seqCounters = new Map<string, number>();
 

@@ -1,6 +1,6 @@
 import { env } from '../config/env.js';
 
-const TIMEOUT_MS = 5000;
+const TIMEOUT_MS = 15000;
 
 interface MLResponse<T> {
   success: boolean;
@@ -63,4 +63,33 @@ export async function getExplanation(alertId: string): Promise<{
     summary: string;
     factors: Array<{ name: string; description: string; weight: number }>;
   }>('/api/explain', { alertId });
+}
+
+export interface AcousticAnalysisResult {
+  status: 'ALERT' | 'NORMAL';
+  threat_type: 'Deforestation' | 'Wildfire' | 'Poaching' | null;
+  detected_sound: string | null;
+  confidence_score: number;
+  timestamp: string;
+  sensor_id: string;
+  audio_snippet_url: string | null;
+  action_required: 'Immediate dispatch' | 'Verification' | null;
+  noise_profile: string | null;
+  processing_ms: number;
+}
+
+/** Analyze a base64 audio clip through the ML acoustic threat detection service */
+export async function analyzeAcoustic(params: {
+  sensor_id: string;
+  audio_base64?: string;
+  audio_url?: string;
+  clip_duration_sec?: number;
+}): Promise<AcousticAnalysisResult | null> {
+  return mlPost<AcousticAnalysisResult>('/analyze', {
+    sensor_id: params.sensor_id,
+    audio_base64: params.audio_base64,
+    audio_url: params.audio_url,
+    clip_duration_sec: params.clip_duration_sec ?? 5,
+    metadata: {},
+  });
 }

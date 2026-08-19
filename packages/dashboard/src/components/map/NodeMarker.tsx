@@ -1,6 +1,6 @@
 import { Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
-import type { MonitoringNode } from '../../../../../shared/types'
+import type { MonitoringNode } from '../../../../shared/types'
 
 const statusColors: Record<string, string> = {
   online: '#10B981',

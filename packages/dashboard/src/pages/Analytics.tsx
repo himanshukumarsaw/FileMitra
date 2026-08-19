@@ -22,7 +22,7 @@ import { useRole } from '@/providers/RoleProvider'
 import { useToast } from '@/components/ui/Toast'
 import { addAudit } from '@/services/activityStore'
 import { cn } from '@/lib/utils'
-import type { Alert } from '../../../../shared/types'
+import type { Alert } from '../../../shared/types'
 
 const COLORS = {
   green: '#10B981',

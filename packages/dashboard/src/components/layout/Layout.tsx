@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { TopBar } from './TopBar'
+import { CustomChatBox } from './CustomChatBox'
 import { useActivityBridge } from '@/hooks/useActivityBridge'
 import { cn } from '@/lib/utils'
 
@@ -44,6 +45,7 @@ export function Layout() {
           <Outlet />
         </main>
       </div>
+          <CustomChatBox />
     </div>
   )
 }

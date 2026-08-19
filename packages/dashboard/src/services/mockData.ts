@@ -12,7 +12,7 @@ import type {
   AlertExplanation,
   SensorReading,
   AnalyticsSummary,
-} from '../../../../shared/types';
+} from '../../../shared/types';
 
 // ---------------------------------------------------------------------------
 // Deterministic seeded PRNG (mulberry32)

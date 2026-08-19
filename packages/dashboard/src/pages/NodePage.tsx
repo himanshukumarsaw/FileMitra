@@ -10,7 +10,7 @@ import {
   flushOfflineQueue,
 } from '@/services/loraTransport'
 import { captureAudioClip, capturePhoto, uploadEvidence } from '@/services/evidenceCapture'
-import type { AlertPayload } from '../../../../shared/types'
+import type { AlertPayload } from '../../../shared/types'
 
 const FALLBACK_COORDS = { lat: 21.58, lng: 79.6 }
 

@@ -7,7 +7,7 @@
 import { useCallback, useRef } from 'react'
 import { useSocketEvent } from '@/hooks/useSocket'
 import { pushNotification, addAudit } from '@/services/activityStore'
-import type { Alert, Dispatch, MonitoringNode } from '../../../../shared/types'
+import type { Alert, Dispatch, MonitoringNode } from '../../../shared/types'
 
 export function useActivityBridge(): void {
   // Track alert statuses so we only audit genuine transitions

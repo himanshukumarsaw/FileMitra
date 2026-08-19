@@ -5,7 +5,7 @@
 
 import { useCallback, useEffect } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import type { Alert, Dispatch, FireRiskZone, MonitoringNode, AnalyticsSummary } from '../../../../shared/types'
+import type { Alert, Dispatch, FireRiskZone, MonitoringNode, AnalyticsSummary } from '../../../shared/types'
 import {
   fetchAlerts,
   fetchNodes,

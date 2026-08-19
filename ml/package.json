@@ -1,0 +1,6 @@
+{
+  "name": "@junglesathi/ml",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JungleSathi ML Acoustic Threat Detection Service"
+}

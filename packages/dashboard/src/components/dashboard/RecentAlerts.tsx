@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { User, Bug, Car, Flame, ArrowRight } from 'lucide-react'
-import type { Alert, AlertSeverity, AlertType } from '../../../../../shared/types'
+import type { Alert, AlertSeverity, AlertType } from '../../../../shared/types'
 import { cn } from '@/lib/utils'
 
 interface RecentAlertsProps {

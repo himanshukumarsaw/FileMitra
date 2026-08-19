@@ -9,7 +9,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Mic, Play, Square, Download, AudioWaveform } from 'lucide-react'
-import type { Alert, AlertType } from '../../../../../shared/types'
+import type { Alert, AlertType } from '../../../../shared/types'
 import { cn } from '@/lib/utils'
 
 // ---------------------------------------------------------------------------

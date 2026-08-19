@@ -110,7 +110,8 @@ router.post('/:id/evidence', async (req: Request, res: Response, next: NextFunct
     const ext = EXT_BY_MIME[mime] ?? (kind === 'audio' ? '.webm' : '.jpg');
 
     fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-    const filename = `${kind}-${nodeId}-${Date.now()}${ext}`;
+    const safeNodeId = nodeId.replace(/[^a-zA-Z0-9_-]/g, '_');
+    const filename = `${kind}-${safeNodeId}-${Date.now()}${ext}`;
     fs.writeFileSync(path.join(UPLOAD_DIR, filename), Buffer.from(base64, 'base64'));
 
     res.status(201).json({ url: `/uploads/${filename}`, mime });

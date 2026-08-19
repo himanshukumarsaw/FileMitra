@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
-/* Self-hosted webfonts (no runtime CDN dependency). Manrope carries display and
-   heading type, Inter the body text, Bebas Neue the landing hero title. */
-@import "@fontsource-variable/manrope";
-@import "@fontsource-variable/inter";
-@import "@fontsource/bebas-neue";
+/* Self-hosted webfonts (no runtime CDN dependency). */
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
 
 /* Semantic tokens let the existing domain components respond to the selected theme. */
 @theme {
@@ -16,23 +20,23 @@
   --color-slate-surface: var(--color-surface);
   --color-slate-text: var(--color-content);
   --color-slate-muted: var(--color-muted);
-  --font-sans: "Inter Variable", "Inter", "Avenir Next", Avenir, ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Manrope Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root, :root.light {
   color-scheme: light;
   --color-canvas: #f4f7f4; --color-surface: #ffffff; --color-surface-raised: #fbfdfb; --color-surface-muted: #edf2ed;
-  --color-content: #18251d; --color-muted: #69766d; --color-subtle: #95a198; --color-line: #dce5dd; --color-line-strong: #c8d4c9;
+  --color-content: #0f1f17; --color-muted: #3f4d46; --color-subtle: #6b7c73; --color-line: #c8d4c9; --color-line-strong: #a3b5ab;
   --color-brand: #177452; --color-brand-strong: #115d42; --color-brand-soft: #e1f2e9; --color-warning: #bd7112; --app-danger: #c6423c;
   --app-shadow: 0 12px 32px rgb(33 50 39 / .07), 0 2px 6px rgb(33 50 39 / .04); --app-shadow-hover: 0 18px 40px rgb(33 50 39 / .12), 0 4px 12px rgb(33 50 39 / .06); --app-grid: rgb(22 77 50 / .035);
 }
 :root.dark {
   color-scheme: dark;
-  --color-canvas: #101814; --color-surface: #17221c; --color-surface-raised: #1c2921; --color-surface-muted: #223128;
-  --color-content: #f2f7f2; --color-muted: #a5b3a8; --color-subtle: #708075; --color-line: #2b3a30; --color-line-strong: #3a4c40;
-  --color-brand: #63cf98; --color-brand-strong: #1c7c53; --color-brand-soft: #153c2b; --color-warning: #f0af45; --app-danger: #f37269;
-  --app-shadow: 0 14px 38px rgb(0 0 0 / .2), 0 2px 8px rgb(0 0 0 / .14); --app-shadow-hover: 0 18px 48px rgb(0 0 0 / .3), 0 5px 14px rgb(0 0 0 / .16); --app-grid: rgb(127 192 145 / .035);
+  --color-canvas: #040a06; --color-surface: #070f0a; --color-surface-raised: #0d1610; --color-surface-muted: #111c14;
+  --color-content: #f3efe2; --color-muted: #c9d6c4; --color-subtle: #8a9f90; --color-line: #1c2a22; --color-line-strong: #2a3c32;
+  --color-brand: #f6c445; --color-brand-strong: #d4a520; --color-brand-soft: #3d2e0a; --color-warning: #f0af45; --app-danger: #f37269;
+  --app-shadow: 0 14px 38px rgb(0 0 0 / .35), 0 2px 8px rgb(0 0 0 / .25); --app-shadow-hover: 0 18px 48px rgb(0 0 0 / .45), 0 5px 14px rgb(0 0 0 / .3); --app-grid: rgb(246 196 69 / 0.03);
 }
 
 * { box-sizing: border-box; }
@@ -76,13 +80,22 @@ main > div { animation: enter-up .34s ease-out both; }
   --home-ink: #f3efe2;
   --home-dim: rgb(201 214 196 / .72);
   --home-green: #12a150;
-  --home-serif: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-  /* "How it works" — muted, institutional end of the gold range */
+  --home-serif: "Poppins", "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --hiw-gold: #d6a62a;
   --hiw-gold-cta: #e4b52f;
   --hiw-ink: #f1ebdd;
   --hiw-body: #91a39a;
   --hiw-bg: #030a07;
+  color-scheme: dark;
+  background-color: #040a06 !important;
+  color: #f3efe2 !important;
+}
+.home-root *, .home-root *::before, .home-root *::after {
+  color-scheme: dark;
+}
+.home-root [class*="bg-white"],
+.home-root [class*="bg-slate"],
+.home-root [class*="bg-black"] {
   color-scheme: dark;
 }
 .home-root ::selection { background: var(--home-gold); color: #10200f; }
@@ -103,7 +116,7 @@ main > div { animation: enter-up .34s ease-out both; }
 .home-cta:hover svg { transform: translateX(3px); }
 
 /* Cinematic hero title — tall narrow caps */
-.home-display { font-family: "Bebas Neue", Impact, "Haettenschweiler", sans-serif; font-size: clamp(3.6rem, 11vw, 9rem); font-weight: 400; line-height: .9; letter-spacing: .012em; text-transform: uppercase; color: var(--home-gold); text-shadow: 0 4px 40px rgb(0 0 0 / .68), 0 1px 3px rgb(0 0 0 / .5); }
+.home-display { font-family: "Poppins", "Montserrat", sans-serif; font-size: clamp(3.6rem, 11vw, 9rem); font-weight: 700; line-height: .9; letter-spacing: .012em; text-transform: uppercase; color: var(--home-gold); text-shadow: 0 4px 40px rgb(0 0 0 / .68), 0 1px 3px rgb(0 0 0 / .5); }
 .home-tagline { margin-top: 1.15rem; font-family: var(--home-serif); font-size: clamp(1rem, 1.85vw, 1.45rem); font-weight: 600; color: var(--home-ink); text-shadow: 0 2px 20px rgb(0 0 0 / .72); }
 
 .home-hero-link { display: inline-flex; align-items: center; gap: .55rem; border-bottom: 1px solid rgb(246 196 69 / .5); padding-bottom: .3rem; font-size: .9375rem; font-weight: 600; color: var(--home-ink); transition: color .18s ease, border-color .18s ease; }
