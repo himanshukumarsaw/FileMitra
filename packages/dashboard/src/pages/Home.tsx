@@ -20,7 +20,7 @@ import {
   ShieldCheck,
   ArrowRight,
 } from 'lucide-react'
-import { JungleScene } from '@/components/home/JungleScene'
+import { HeroBackdrop } from '@/components/home/HeroBackdrop'
 
 const NAV = [
   { label: 'Overview', to: '/dashboard' },
@@ -67,13 +67,6 @@ export function Home() {
       {/* ── Utility bar ──────────────────────────────────────────── */}
       <div className="relative z-30 bg-[#050b07] text-[.8125rem]">
         <div className="mx-auto flex h-9 max-w-[1600px] items-center gap-5 px-4 sm:px-6">
-          <Link to="/analytics" className="home-util hidden sm:inline">
-            Conservation
-          </Link>
-          <Link to="/incidents" className="home-util hidden sm:inline">
-            Field Reports
-          </Link>
-
           <div className="ml-auto flex items-center gap-4 sm:gap-5">
             <button type="button" className="home-util inline-flex items-center gap-1.5">
               English
@@ -93,7 +86,7 @@ export function Home() {
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <header className="relative isolate min-h-[clamp(560px,88vh,940px)] overflow-hidden">
-        <JungleScene />
+        <HeroBackdrop />
 
         {/* Masthead over the scene */}
         <div className="relative z-20 mx-auto flex max-w-[1600px] items-center px-4 py-5 sm:px-6">
@@ -135,8 +128,9 @@ export function Home() {
           </Link>
         </div>
 
-        {/* Live strip anchored to the hero base */}
-        <dl className="absolute inset-x-0 bottom-0 z-10 mx-auto grid max-w-[1600px] grid-cols-2 gap-x-6 gap-y-4 border-t border-white/10 px-6 py-5 backdrop-blur-[2px] sm:grid-cols-4">
+        {/* Live strip anchored to the hero base. Width is capped so the fixed
+            help bubble in the corner can't sit on top of the last figure. */}
+        <dl className="absolute inset-x-0 bottom-0 z-10 mx-auto grid max-w-[1040px] grid-cols-2 gap-x-6 gap-y-5 border-t border-white/10 px-6 py-5 text-center backdrop-blur-[2px] sm:grid-cols-4">
           {[
             ['Nodes on watch', '10'],
             ['Hectares covered', '4,200'],

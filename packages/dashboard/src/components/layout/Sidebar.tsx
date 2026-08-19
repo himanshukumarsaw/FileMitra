@@ -99,7 +99,6 @@ export function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onCloseMobile
             <NavLink
               key={item.to}
               to={item.to}
-              end={item.to === '/'}
               onClick={onCloseMobile}
               title={!showLabels ? item.label : undefined}
               className={({ isActive }) =>
